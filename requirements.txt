@@ -1,0 +1,38 @@
+# ---------------------------------------------------------------------------
+# Python dependencies for all three services plus both models.
+#
+# Install with:
+#     pip install -r requirements.txt
+#
+# torch: the CPU wheel is enough. The U-Net is small and a single 256x256
+# forward pass takes well under a second on CPU, so a GPU buys nothing here.
+# If pip pulls a CUDA build and you would rather not have the download, use:
+#     pip install torch --index-url https://download.pytorch.org/whl/cpu
+# ---------------------------------------------------------------------------
+
+# --- models -----------------------------------------------------------------
+torch>=2.0
+numpy>=1.24
+opencv-python>=4.8
+Pillow>=10.0
+shapely>=2.0
+pyproj>=3.5
+scipy>=1.10
+
+# --- ocean current data -----------------------------------------------------
+openmeteo-requests>=1.2
+requests-cache>=1.1
+retry-requests>=2.0
+
+# --- services ---------------------------------------------------------------
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pydantic>=2.5
+pymongo>=4.6
+python-dotenv>=1.0
+
+# --- optional -----------------------------------------------------------------
+# Only needed if you point CURRENT_CACHE_PATH at a downloaded CMEMS NetCDF
+# instead of using the Open-Meteo API.
+# xarray>=2023.1
+# netCDF4>=1.6
